@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javek Printing — Staff Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN VIEW -->
+<div id="loginView" class="login-screen">
+  <form id="loginForm" class="login-card">
+    <img src="javek-logo.jpg" alt="Javek Printing" class="logo-img">
+    <h1>Staff sign in</h1>
+    <p class="sub">Javek Printing internal dashboard</p>
+    <div class="field">
+      <label for="username">Username</label>
+      <input type="text" id="username" required autocomplete="username">
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" required autocomplete="current-password">
+    </div>
+    <p id="loginError" class="error"></p>
+    <button type="submit" class="btn-primary">Sign in</button>
+  </form>
+</div>
+
+<!-- DASHBOARD VIEW -->
+<div id="dashView" class="dash hidden">
+  <header class="dash-header">
+    <div class="brand"><img src="javek-logo.jpg" alt="Javek Printing" class="logo-img small">Staff Dashboard</div>
+    <div class="header-right">
+      <span id="whoami" class="whoami"></span>
+      <button id="logoutBtn" class="btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <main class="dash-main">
+    <div class="toolbar">
+      <div class="filters" id="filters">
+        <button class="filter-chip active" data-status="">All</button>
+        <button class="filter-chip" data-status="new">New</button>
+        <button class="filter-chip" data-status="in_progress">In progress</button>
+        <button class="filter-chip" data-status="ready">Ready</button>
+        <button class="filter-chip" data-status="completed">Completed</button>
+      </div>
+      <button id="refreshBtn" class="btn-ghost small">Refresh</button>
+    </div>
+
+    <div class="table-wrap">
+      <table id="subTable">
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Files</th>
+            <th>Status</th>
+            <th>Received</th>
+          </tr>
+        </thead>
+        <tbody id="subTableBody"></tbody>
+      </table>
+      <p id="emptyState" class="empty hidden">No submissions yet.</p>
+    </div>
+  </main>
+</div>
+
+<!-- DETAIL PANEL -->
+<div id="detailOverlay" class="overlay hidden">
+  <div class="detail-panel">
+    <button id="closeDetail" class="close-btn" aria-label="Close">×</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
