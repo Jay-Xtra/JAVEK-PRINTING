@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAVEK PRINTING — Press. Bind. Deliver.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EEDD;
+    --cream-deep:#EAE0C4;
+    --paper:#FBF8EF;
+    --violet-deep:#331B47;
+    --violet:#5E3583;
+    --violet-soft:#8562A8;
+    --violet-pale:#E7DCF2;
+    --ink:#241A30;
+    --brass:#AD7F35;
+    --brass-soft:#D9BE8A;
+    --white:#FFFDF7;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.08;
+    color:var(--violet-deep);
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  section{padding:96px 0;}
+  @media (max-width:640px){section{padding:64px 0;}}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+    outline:3px solid var(--brass);
+    outline-offset:3px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(244,238,221,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(51,27,71,0.12);
+  }
+  .nav{
+    max-width:var(--max);margin:0 auto;padding:18px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.5rem;
+    color:var(--violet-deep);display:flex;align-items:center;gap:10px;
+  }
+  .brand-mark{
+    width:34px;height:34px;border-radius:3px;
+    background:var(--violet-deep);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cream);font-size:1.1rem;font-weight:700;
+    transform:rotate(-4deg);
+  }
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{font-size:0.98rem;font-weight:500;color:var(--ink);}
+  .nav-links a:hover{color:var(--violet);}
+  .nav-cta{
+    background:var(--violet-deep);color:var(--white);
+    padding:10px 20px;border-radius:2px;font-weight:600;font-size:0.95rem;
+    border:1px solid var(--violet-deep);
+  }
+  .nav-cta:hover{background:var(--violet);border-color:var(--violet);}
+  .menu-btn{
+    display:none;background:none;border:none;cursor:pointer;
+    width:32px;height:24px;position:relative;
+  }
+  .menu-btn span{
+    position:absolute;left:0;width:100%;height:2px;background:var(--violet-deep);
+    transition:.25s;
+  }
+  .menu-btn span:nth-child(1){top:0;}
+  .menu-btn span:nth-child(2){top:11px;}
+  .menu-btn span:nth-child(3){top:22px;}
+  @media (max-width:860px){
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);
+      flex-direction:column;align-items:flex-start;
+      padding:8px 28px 24px;gap:18px;
+      border-bottom:1px solid rgba(51,27,71,0.12);
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:88px 0 100px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(680px 380px at 88% -10%, var(--violet-pale) 0%, transparent 60%),
+      var(--cream);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;
+  }
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow{
+    font-size:0.92rem;color:var(--brass);font-weight:600;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,5vw,3.6rem);
+    letter-spacing:-0.01em;
+    max-width:11ch;
+  }
+  .hero p{
+    margin-top:22px;font-size:1.15rem;max-width:46ch;color:#4A3A5A;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:14px 26px;border-radius:2px;
+    font-weight:600;font-size:1rem;border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--violet-deep);color:var(--white);}
+  .btn-primary:hover{background:var(--violet);}
+  .btn-ghost{border-color:var(--violet-deep);color:var(--violet-deep);background:transparent;}
+  .btn-ghost:hover{background:var(--violet-deep);color:var(--white);}
+
+  .press-art{position:relative;height:380px;}
+  .plate{
+    position:absolute;background:var(--violet-deep);border-radius:4px;
+    box-shadow:0 30px 60px -25px rgba(51,27,71,0.55);
+  }
+  .plate.p1{width:230px;height:290px;top:10px;left:40px;transform:rotate(-7deg);}
+  .plate.p2{
+    width:230px;height:290px;top:55px;left:130px;transform:rotate(6deg);
+    background:var(--paper);border:1.5px solid var(--violet-deep);
+  }
+  .plate.p2 .lines{padding:30px 24px;}
+  .plate.p2 .lines div{height:8px;background:var(--violet-pale);margin-bottom:14px;border-radius:1px;}
+  .plate.p2 .lines div:nth-child(1){width:70%;background:var(--brass-soft);}
+  .plate.p2 .lines div:nth-child(4){width:40%;}
+  .stamp{
+    position:absolute;top:34px;right:6px;
+    width:96px;height:96px;border-radius:50%;
+    border:2.5px solid var(--brass);
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-14deg);
+    color:var(--brass);font-family:'Fraunces',serif;font-weight:600;
+    font-size:0.72rem;text-align:center;letter-spacing:0.04em;
+    background:rgba(251,248,239,0.9);
+  }
+  @media (max-width:900px){.press-art{height:280px;margin-top:8px;}}
+
+  /* ---------- services ---------- */
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);}
+  .section-head p{margin-top:14px;color:#4A3A5A;font-size:1.05rem;}
+
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+    background:rgba(51,27,71,0.14);
+    border:1px solid rgba(51,27,71,0.14);
+  }
+  @media (max-width:860px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--paper);padding:34px 28px;
+  }
+  .service-card h3{font-size:1.2rem;margin-bottom:10px;}
+  .service-card p{color:#4A3A5A;font-size:0.96rem;}
+  .service-card .price{
+    margin-top:18px;font-family:'Fraunces',serif;color:var(--brass);
+    font-weight:600;font-size:1.05rem;
+  }
+
+  /* ---------- process ---------- */
+  .process{background:var(--violet-deep);color:var(--cream);}
+  .process .section-head h2,.process .eyebrow{color:var(--cream);}
+  .process .eyebrow{color:var(--brass-soft);}
+  .process .section-head p{color:#D8C9E6;}
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:36px;
+  }
+  @media (max-width:860px){.steps{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.steps{grid-template-columns:1fr;}}
+  .step .num{
+    font-family:'Fraunces',serif;font-size:1rem;color:var(--brass-soft);
+    border:1px solid rgba(217,190,138,0.5);width:36px;height:36px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .step h3{color:var(--white);font-size:1.1rem;margin-bottom:8px;}
+  .step p{color:#CBB8DC;font-size:0.94rem;}
+
+  /* ---------- upload ---------- */
+  .upload-wrap{
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;
+  }
+  @media (max-width:900px){.upload-wrap{grid-template-columns:1fr;}}
+  .upload-info h2{font-size:clamp(1.9rem,3.6vw,2.5rem);margin-bottom:18px;}
+  .upload-info p{color:#4A3A5A;margin-bottom:16px;}
+  .upload-info ul{margin-top:20px;display:flex;flex-direction:column;gap:12px;}
+  .upload-info li{
+    display:flex;gap:12px;align-items:flex-start;color:#4A3A5A;font-size:0.96rem;
+  }
+  .check{
+    flex:none;width:20px;height:20px;border-radius:50%;
+    background:var(--violet-pale);color:var(--violet-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-size:0.7rem;font-weight:700;margin-top:2px;
+  }
+
+  form.upload-form{
+    background:var(--paper);border:1px solid rgba(51,27,71,0.14);
+    padding:36px;border-radius:4px;
+  }
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;font-size:0.88rem;font-weight:600;margin-bottom:7px;color:var(--violet-deep);
+  }
+  .field input[type=text],
+  .field input[type=email],
+  .field input[type=tel],
+  .field select,
+  .field textarea{
+    width:100%;padding:12px 14px;border:1px solid rgba(51,27,71,0.25);
+    border-radius:2px;background:var(--white);font-family:inherit;font-size:0.98rem;color:var(--ink);
+  }
+  .field textarea{resize:vertical;min-height:90px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media (max-width:480px){.row2{grid-template-columns:1fr;}}
+
+  .dropzone{
+    border:1.5px dashed var(--violet-soft);border-radius:3px;
+    padding:26px;text-align:center;cursor:pointer;background:var(--violet-pale);
+    transition:.2s;
+  }
+  .dropzone.drag{background:#DCC9EE;}
+  .dropzone p{font-size:0.92rem;color:var(--violet-deep);}
+  .dropzone .sub{font-size:0.8rem;color:var(--violet);margin-top:4px;}
+  #fileInput{display:none;}
+  #fileList{margin-top:12px;display:flex;flex-direction:column;gap:6px;}
+  .file-chip{
+    display:flex;justify-content:space-between;align-items:center;
+    background:var(--white);border:1px solid rgba(51,27,71,0.18);
+    padding:8px 12px;border-radius:2px;font-size:0.85rem;
+  }
+  .file-chip button{
+    background:none;border:none;color:var(--brass);cursor:pointer;font-size:0.85rem;font-weight:600;
+  }
+
+  .submit-btn{
+    width:100%;margin-top:8px;background:var(--violet-deep);color:var(--white);
+    padding:15px;border:none;border-radius:2px;font-weight:600;font-size:1rem;cursor:pointer;
+  }
+  .submit-btn:hover{background:var(--violet);}
+  .form-note{font-size:0.8rem;color:var(--violet-soft);margin-top:14px;}
+
+  .success-panel{
+    display:none;border:1px solid var(--violet-deep);background:var(--violet-pale);
+    padding:24px;border-radius:3px;margin-top:20px;
+  }
+  .success-panel.show{display:block;}
+  .success-panel h4{color:var(--violet-deep);margin-bottom:6px;}
+  .success-panel p{font-size:0.92rem;color:#4A3A5A;}
+
+  /* ---------- pricing ---------- */
+  .pricing-table{
+    border:1px solid rgba(51,27,71,0.14);background:var(--paper);
+  }
+  .pricing-row{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;
+    padding:18px 26px;border-bottom:1px solid rgba(51,27,71,0.12);
+    align-items:center;
+  }
+  .pricing-row.head{
+    background:var(--violet-deep);color:var(--cream);font-weight:600;font-size:0.88rem;
+  }
+  .pricing-row:last-child{border-bottom:none;}
+  .pricing-row span:nth-child(2),.pricing-row span:nth-child(3){color:#4A3A5A;font-size:0.94rem;}
+  .pricing-row.head span{color:var(--cream);}
+  @media (max-width:600px){
+    .pricing-row{grid-template-columns:1fr;gap:4px;padding:16px 20px;}
+    .pricing-row span:nth-child(2)::before{content:"Turnaround: ";font-weight:600;}
+    .pricing-row span:nth-child(3)::before{content:"From: ";font-weight:600;}
+    .pricing-row.head{display:none;}
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:30px;}
+  .stat b{font-family:'Fraunces',serif;font-size:2rem;color:var(--violet-deep);display:block;}
+  .stat span{font-size:0.88rem;color:#4A3A5A;}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--cream-deep);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-card{
+    background:var(--paper);border:1px solid rgba(51,27,71,0.14);padding:30px;border-radius:3px;
+  }
+  .contact-card h3{font-size:1.05rem;margin-bottom:6px;}
+  .contact-card p{color:#4A3A5A;font-size:0.95rem;}
+  .contact-list{display:flex;flex-direction:column;gap:22px;}
+
+  footer{
+    background:var(--violet-deep);color:#CBB8DC;padding:44px 0 30px;
+  }
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:center;}
+  .footer-brand{color:var(--white);font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;}
+  footer .fine{font-size:0.82rem;margin-top:18px;color:#A98FC2;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand"><img src="javek logo.png" alt="Javek Printing style=height : 36px; width : auto;"></span>Javek PrintING</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#process">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#upload" class="nav-cta">Send a document</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Javek Printing — Accra</div>
+        <h1>Your documents, pressed to perfection.</h1>
+        <p>From single-page reports to full print runs — upload your files, tell us how you want them finished, and collect crisp, ready-to-use prints.</p>
+        <div class="hero-actions">
+          <a href="#upload" class="btn btn-primary">Send a document</a>
+          <a href="#services" class="btn btn-ghost">View services</a>
+        </div>
+      </div>
+      <div class="press-art" aria-hidden="true">
+        <div class="plate p1"></div>
+        <div class="plate p2">
+          <div class="lines">
+            <div></div><div></div><div></div><div></div>
+          </div>
+        </div>
+        <div class="stamp">QUALITY<br>PRINT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Services</div>
+        <h2>What we print</h2>
+        <p>Pick a service below, or upload your file and let us recommend the right finish.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Document &amp; report printing</h3>
+          <p>Assignments, theses, proposals and manuscripts — black &amp; white or full colour, single or double-sided.</p>
+          <div class="price">From GHS 1.50 / page for black & white</div>
+          <div class="price"> From GHS 2.50 / page colour content for coloured printing</div>
+
+        </div>
+        <div class="service-card">
+          <h3>Binding &amp; booklets</h3>
+          <p>Comb and slide binding, with card or laminated covers.</p>
+          <div class="price">From GHS 15 / copy</div>
+        </div>
+        <div class="service-card">
+          <h3>Business cards &amp; stationery</h3>
+          <p>Letterheads, invoice books, complimentary cards and branded stationery sets.</p>
+          <div class="price">From GHS 60 / box</div>
+        </div>
+        <div class="service-card">
+          <h3>Flyers &amp; posters</h3>
+          <p>Event flyers, posters and handbills on gloss, matte, art or chromocoat , A4.</p>
+          <div class="price"> GHS 4.50 / sheet</div>
+          <p>Event flyers, posters and handbills on gloss, matte, art or chromocoat, A3.</p>
+          <div class="price"> GHS 9.00</div>
+        </div>
+        <div class="service-card">
+          <h3>Banners &amp; large format</h3>
+          <p>Vinyl banners, roll-up stands and signage for events, shops and campaigns.</p>
+          <div class="price">From GHS 120 / banner</div>
+        </div>
+        <div class="service-card">
+          <h3>Branding &amp; design help</h3>
+          <p>Need a layout fixed or a design from scratch? Our team can prep your file before it's printed.</p>
+          <div class="price">Quoted per job</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">How it works</div>
+        <h2>Four steps from file to finished print</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Upload</h3>
+          <p>Send your document and tell us the paper, size and finish you want.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>We quote</h3>
+          <p>We review the file and send you a price and turnaround time.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>You approve</h3>
+          <p>Confirm the quote and we queue your job on the press.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Collect or receive</h3>
+          <p>Pick up in-store or have your prints delivered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOAD -->
+  <section id="upload">
+    <div class="wrap upload-wrap">
+      <div class="upload-info">
+        <div class="eyebrow">Send a document</div>
+        <h2>Get your print job started</h2>
+        <p>Fill in the form and attach your file. Our team will confirm pricing and turnaround before anything goes to press.</p>
+        <ul>
+          <li><span class="check">✓</span>PDF, Word, JPEG and PNG files accepted</li>
+          <li><span class="check">✓</span>Maximum 25MB per file — split larger jobs into parts</li>
+          <li><span class="check">✓</span>We'll reply with a quote within a few hours</li>
+        </ul>
+      </div>
+
+      <form class="upload-form" id="uploadForm">
+        <div class="row2">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="service">Service needed</label>
+          <select id="service" name="service">
+            <option>Document / report printing</option>
+            <option>Binding &amp; booklets</option>
+            <option>Business cards &amp; stationery</option>
+            <option>Flyers &amp; posters</option>
+            <option>Banners &amp; large format</option>
+            <option>Not sure — recommend one</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Attach document(s)</label>
+          <div class="dropzone" id="dropzone">
+            <p>Click to choose files, or drag them here</p>
+            <p class="sub">PDF, DOCX, JPG, PNG · up to 25MB each</p>
+            <input type="file" id="fileInput" multiple>
+          </div>
+          <div id="fileList"></div>
+        </div>
+        <div class="field">
+          <label for="notes">Notes (paper, size, colour, quantity, deadline)</label>
+          <textarea id="notes" name="notes" placeholder="e.g. 40 copies, A4, colour, slide bind, needed by Friday"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit print request</button>
+        <p class="form-note">Files are sent securely to our team for review before anything goes to print.</p>
+
+        <div class="success-panel" id="successPanel">
+          <h4>Request captured</h4>
+          <p id="successText"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Pricing</div>
+        <h2>Starting prices</h2>
+        <p>Final cost depends on paper, colour and quantity — every job gets a confirmed quote before we print.</p>
+      </div>
+      <div class="pricing-table">
+        <div class="pricing-row head">
+          <span>Service</span><span>Turnaround</span><span>From</span>
+        </div>
+        <div class="pricing-row"><span>B/W document printing</span><span>Same day</span><span>GHS 1.50 / page</span></div>
+        <div class="pricing-row"><span>Colour document printing</span><span>Same day</span><span>GHS 2.50 and above / page</span></div>
+        <div class="pricing-row"><span>Slide / comb binding</span><span>Same day</span><span>Depending on size</span></div>
+        <div class="pricing-row"><span>Business cards (100 pcs)</span><span>1–2 days</span><span>GHS 120 and GHS 180</span></div>
+        <div class="pricing-row"><span>A3 poster </span><span>Same day</span><span>GHS 6 / sheet</span></div>
+        <div class="pricing-row"><span></span></div>
+        <div class="pricing-row"><span>Banners / Stickers / Labels (Depending on size)</span><span>1–2 days depending on availabe work</span><span>Depending on size </span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">About us</div>
+        <h2>A press built for students, businesses and everyday errands</h2>
+        <p style="margin-top:16px;color:#4A3A5A;">Javek Printing prints assignments, theses, business stationery and event materials for the campus community and local businesses. We handle small one-off jobs and larger print runs with the same care.</p>
+        <div class="about-stats">
+          <div class="stat"><b>10+</b><span>years in the print trade</span></div>
+          <div class="stat"><b>Same-day</b><span>turnaround on most document jobs</span></div>
+          <div class="stat"><b>6</b><span>core print services</span></div>
+          <div class="stat"><b>1,000+</b><span>jobs printed and collected</span></div>
+        </div>
+      </div>
+      <div class="press-art" aria-hidden="true" style="height:320px;">
+        <div class="plate p1" style="top:20px;"></div>
+        <div class="plate p2" style="top:60px;">
+          <div class="lines"><div></div><div></div><div></div><div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Visit or reach us</h2>
+        <div class="contact-list" style="margin-top:28px;">
+          <div>
+            <h3>Shop location</h3>
+            <p>Community 18, opposite GRA TSC, Spintex, Accra, Ghana</p>
+          </div>
+          <div>
+            <h3>Phone &amp; WhatsApp</h3>
+            <p>0207751787 / 0245716120</p>
+          </div>
+          <div>
+            <h3>Email</h3>
+            <p>javekgraphics@gmail.com</p>
+          </div>
+          <div>
+            <h3>Opening hours</h3>
+            <p>Monday – Friday, 8:00am – 6:00pm</p>
+            <p>Saturday, 8:30am – 4:00pm</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Prefer to drop off in person?</h3>
+        <p style="margin-top:10px;">Bring your files on a flash drive or send them ahead using the upload form so your job is ready when you arrive.</p>
+        <a href="#upload" class="btn btn-primary" style="margin-top:20px;">Send a document instead</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">Javek Printing</div>
+    <nav style="display:flex;gap:24px;flex-wrap:wrap;">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="wrap fine">© <span id="year"></span> Javek Printing. All rights reserved.</div>
+</footer>
+
+<script>
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // upload dropzone
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+  const fileList = document.getElementById('fileList');
+  let selectedFiles = [];
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
+  dropzone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropzone.classList.remove('drag');
+    addFiles(e.dataTransfer.files);
+  });
+  fileInput.addEventListener('change', () => addFiles(fileInput.files));
+
+  function addFiles(fileArr) {
+    Array.from(fileArr).forEach(f => selectedFiles.push(f));
+    renderFileList();
+  }
+
+  function renderFileList() {
+    fileList.innerHTML = '';
+    selectedFiles.forEach((f, i) => {
+      const chip = document.createElement('div');
+      chip.className = 'file-chip';
+      const sizeKB = (f.size / 1024).toFixed(0);
+      chip.innerHTML = `<span>${f.name} · ${sizeKB}KB</span>`;
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.textContent = 'Remove';
+      removeBtn.addEventListener('click', () => {
+        selectedFiles.splice(i, 1);
+        renderFileList();
+      });
+      chip.appendChild(removeBtn);
+      fileList.appendChild(chip);
+    });
+  }
+
+  // form submit — sends the job to the Javek Printing backend
+  const uploadForm = document.getElementById('uploadForm');
+  const successPanel = document.getElementById('successPanel');
+  const successText = document.getElementById('successText');
+  const submitBtn = uploadForm.querySelector('.submit-btn');
+
+  // Point this at your deployed backend. While testing locally, leave it as-is
+  // and run the backend with `npm start` (it listens on http://localhost:4000).
+  const API_BASE = 'http://localhost:4000';
+
+  uploadForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    successPanel.classList.remove('show');
+
+    const name = document.getElementById('fullName').value.trim();
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending…';
+    submitBtn.disabled = true;
+
+    const formData = new FormData();
+    formData.append('fullName', name);
+    formData.append('email', document.getElementById('email').value.trim());
+    formData.append('phone', document.getElementById('phone').value.trim());
+    formData.append('service', document.getElementById('service').value);
+    formData.append('notes', document.getElementById('notes').value.trim());
+    selectedFiles.forEach(file => formData.append('files', file));
+
+    try {
+      const res = await fetch(`${API_BASE}/api/submissions`, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        successText.textContent = data.error || 'Something went wrong — please try again or contact us directly.';
+      } else {
+        successText.textContent = `Thanks, ${name || 'there'} — reference ${data.reference}. ${data.filesReceived} file(s) received. We'll follow up by email or phone with a quote.`;
+        uploadForm.reset();
+        selectedFiles = [];
+        renderFileList();
+      }
+    } catch (err) {
+      successText.textContent = 'Could not reach the server. Please check your connection and try again, or contact us directly.';
+    } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+      successPanel.classList.add('show');
+      successPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>
+
+</body>
+</html>
